@@ -51,12 +51,16 @@ namespace magister
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
 
-            targetWindow = UImanager.GetTargetWindow();
-            targetWindow.OnWindowClosed.AddListener(LoseTarget);
+            if (UImanager != null )
+            {
+                targetWindow = UImanager.GetTargetWindow();
+                targetWindow.OnWindowClosed.AddListener(LoseTarget);
 
-            dialogWindow = UImanager.GetDialogWindow();
+                dialogWindow = UImanager.GetDialogWindow();
 
-            npcDialogCursor = UImanager.GetComponent<CursorDefinition>().GetNPCDialogCursor();
+                npcDialogCursor = UImanager.GetComponent<CursorDefinition>().GetNPCDialogCursor();
+            }
+
 
             input = new CustomActions();
             AssignInputs();
